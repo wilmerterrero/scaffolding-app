@@ -1,0 +1,28 @@
+version: "3.7" # docker-compose api version
+
+services:
+  app:
+    container_name: carmin_api
+    build:
+      context: app
+      dockerfile: ./Dockerfile
+    env_file: ./.env
+    stdin_open: true
+    tty: true
+    ports:
+      - "6000:6000"
+    links:
+      - carmin_mongo
+
+  mongo:
+    container_name: carmin_mongo
+    image: mongo
+    restart: always
+    env_file: ./.env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: $MONGODB_USER
+      MONGO_INITDB_ROOT_PASSWORD: $MONGODB_PASSWORD
+    ports:
+      - "27017:27017"
+    logging:
+      driver: none
