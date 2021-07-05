@@ -2,7 +2,7 @@ version: "3.7" # docker-compose api version
 
 services:
   app:
-    container_name: carmin_api
+    container_name: example_api
     build:
       context: app
       dockerfile: ./Dockerfile
@@ -15,7 +15,7 @@ services:
       - carmin_mongo
 
   mongo:
-    container_name: carmin_mongo
+    container_name: example_mongo
     image: mongo
     restart: always
     env_file: ./.env
