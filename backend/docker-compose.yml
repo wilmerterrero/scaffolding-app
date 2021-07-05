@@ -12,7 +12,7 @@ services:
     ports:
       - "6000:6000"
     links:
-      - carmin_mongo
+      - example_mongo
 
   mongo:
     container_name: example_mongo
